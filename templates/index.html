@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Groundwater Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2f3;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 450px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px #0002;
+        }
+
+        h2 {
+            text-align: center;
+            color: #176b55;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 11px;
+            margin-top: 7px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 22px;
+            background: #176b55;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #10513f;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e2f5e9;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .error {
+            margin-top: 15px;
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Groundwater Prediction</h2>
+
+    <form method="POST">
+
+        <label>Village Location</label>
+        <input type="text" name="location"
+               placeholder="Enter village name" required>
+
+        <label>Rainfall (mm)</label>
+        <input type="number" name="rainfall"
+               step="any" min="0" required>
+
+        <label>Soil Type</label>
+        <select name="soil_type" required>
+            <option value="">Select Soil Type</option>
+            <option value="clay">Clay</option>
+            <option value="sandy">Sandy</option>
+            <option value="black_soil">Black Soil</option>
+            <option value="red_soil">Red Soil</option>
+            <option value="loamy">Loamy</option>
+            <option value="laterite">Laterite</option>
+            <option value="gravel">Gravel</option>
+        </select>
+
+        <label>Water Level (meters)</label>
+        <input type="number" name="water_level"
+               step="any" min="0" required>
+
+        <button type="submit">Predict Well Depth</button>
+
+    </form>
+
+    {% if prediction is not none %}
+    <div class="result">
+        <h3>Prediction Result</h3>
+        <p>Village: {{ location }}</p>
+        <h2>{{ prediction }} meters</h2>
+        <p>Predicted Well Depth</p>
+    </div>
+    {% endif %}
+
+    {% if error %}
+    <div class="error">
+        {{ error }}
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
