@@ -1,0 +1,12 @@
+
+location,rainfall,soil_type,water_level,well_depth
+village_1,120,clay,15,50
+village_2,150,sandy,12,45
+village_3,90,black_soil,20,65
+village_4,180,sandy,10,40
+village_5,110,clay,18,55
+village_6,200,black_soil,8,35
+village_7,140,red_soil,16,52
+village_8,130,loamy,14,48
+village_9,100,laterite,22,68
+village_10,160,gravel,11,43
